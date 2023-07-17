@@ -4,14 +4,53 @@
                 $page = "dashboard.php";
                 include "main.php";
             } elseif (isset($_GET['x']) && $_GET['x'] == 'menu') {
-                $page = "menu.php";
-                include "main.php";
+                if ($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 3) {
+                    $page = "menu.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
+            } elseif (isset($_GET['x']) && $_GET['x'] == 'katmenu') {
+                if ($_SESSION['level_user'] == 1) {
+                    $page = "kat_menu.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
             } elseif (isset($_GET['x']) && $_GET['x'] == 'order') {
-                $page = "order.php";
-                include "main.php";
-            } elseif (isset($_GET['x']) && $_GET['x'] == 'customer') {
-                $page = "customer.php";
-                include "main.php";
+                if ($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 2 || $_SESSION['level_user'] == 3) {
+                    $page = "order.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
+            } elseif (isset($_GET['x']) && $_GET['x'] == 'orderitem') {
+                if ($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 3) {
+                    $page = "order_item.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
+            } elseif (isset($_GET['x']) && $_GET['x'] == 'viewitem') {
+                if ($_SESSION['level_user'] == 1) {
+                    $page = "view_item.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
+            } elseif (isset($_GET['x']) && $_GET['x'] == 'dapur') {
+                if ($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 4) {
+                    $page = "dapur.php";
+                    include "main.php";
+                } else {
+                    $page = "dashboard.php";
+                    include "main.php";
+                }
             } elseif (isset($_GET['x']) && $_GET['x'] == 'user') {
                 if ($_SESSION['level_user'] == 1) {
                     $page = "user.php";

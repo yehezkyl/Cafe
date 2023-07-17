@@ -10,6 +10,7 @@ if (!empty($_POST['cek_login'])) {
     if ($hasil) {
         $_SESSION['username_cafe'] = $username;
         $_SESSION['level_user'] = $hasil['level'];
+        $_SESSION['id_user'] = $hasil['id_user'];
         header('location:../dashboard');
     } else { ?>
 

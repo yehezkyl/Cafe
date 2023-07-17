@@ -91,7 +91,7 @@ while ($record = mysqli_fetch_array($query)) {
             foreach ($result as $row) {
             ?>
                 <!-- Modal View User-->
-                <div class="modal fade" id="ModalView<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalView<?php echo $row['id_user'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -166,7 +166,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir Modal View User-->
 
                 <!-- Modal Edit User-->
-                <div class="modal fade" id="ModalEdit<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalEdit<?php echo $row['id_user'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -175,7 +175,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_edit_user.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id_user">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-floating mb-3">
@@ -240,7 +240,7 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
                 <!-- Akhir Modal Edit User-->
                 <!-- Modal Hapus User-->
-                <div class="modal fade" id="ModalHapus<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalHapus<?php echo $row['id_user'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -249,7 +249,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_hapus_user.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id">
                                     <div class="col-lg-12">
                                         <?php
                                         if ($row['username'] == $_SESSION['username_cafe']) {
@@ -273,7 +273,7 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
                 <!-- Akhir Modal Hapus User-->
                 <!-- Modal Reset Password-->
-                <div class="modal fade" id="ModalResetPassword<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalResetPassword<?php echo $row['id_user'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-md modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -282,7 +282,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_reset_password.php" method="POST">
-                                    <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                    <input type="hidden" value="<?php echo $row['id_user'] ?>" name="id">
                                     <div class="col-lg-12">
                                         <?php
                                         if ($row['username'] == $_SESSION['username_cafe']) {
@@ -318,6 +318,7 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">id</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Level</th>
@@ -333,6 +334,7 @@ while ($record = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
                                     <th scope="row"><?php echo $no++ ?></th>
+                                    <td><?php echo $row['id_user'] ?></td>
                                     <td><?php echo $row['nama'] ?></td>
                                     <td><?php echo $row['username'] ?></td>
                                     <td><?php
@@ -348,10 +350,10 @@ while ($record = mysqli_fetch_array($query)) {
                                         ?></td>
                                     <td><?php echo $row['kontak'] ?></td>
                                     <td class="d-flex">
-                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id'] ?>"><i class="bi bi-eye"></i></button>
-                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id'] ?>"><i class="bi bi-trash"></i></button>
-                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalResetPassword<?php echo $row['id'] ?>"><i class="bi bi-key"></i></button>
+                                        <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_user'] ?>"><i class="bi bi-eye"></i></button>
+                                        <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_user'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id_user'] ?>"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalResetPassword<?php echo $row['id_user'] ?>"><i class="bi bi-key"></i></button>
                                     </td>
                                 </tr>
                         </tbody>
