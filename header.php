@@ -1,3 +1,9 @@
+<?php
+include "proses/konek.php";
+$query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username= '$_SESSION[username_cafe]'");
+$record = mysqli_fetch_array($query);
+
+?>
 <nav class="navbar navbar-expand sticky-top navbar-dark" style="background-color: #1e90ff;">
     <div class="container-lg">
         <a class="navbar-brand" href="."><i class="bi bi-egg-fried"></i> Cafe</a>
@@ -112,10 +118,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="passwordlama" required>
-                                <label for=" floatingPassword">Password Lama</label>
+                                <input type="text" class="form-control" id="floatingNama" name="nama" value="<?php echo $record['nama'] ?>" required>
+                                <label for=" floatingPassword">Nama</label>
                                 <div class="invalid-feedback">
-                                    Masukkan Password Lama
+                                    Masukkan Nama Anda
                                 </div>
                             </div>
                         </div>
@@ -123,30 +129,20 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="passwordbaru" required>
-                                <label for=" floatingPassword">Password Baru</label>
+                                <input type="number" class="form-control" id="floatingKontak" name="kontak" value="<?php echo $record['kontak'] ?>" required>
+                                <label for=" floatingPassword">Kontak</label>
                                 <div class="invalid-feedback">
-                                    Masukkan Password Baru
+                                    Masukkan Kontak Anda
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="repasswordbaru" required>
-                                <label for=" floatingPassword">Ulangi Password Baru</label>
-                                <div class="invalid-feedback">
-                                    Masukkan Ulangi Password Baru
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name="cek_ubah_password" value="12345">Save changes</button>
+                        <button type="submit" class="btn btn-primary" name="cek_ubah_profile" value="12345">Save changes</button>
                     </div>
                 </form>
             </div>
