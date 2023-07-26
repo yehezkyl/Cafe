@@ -9,13 +9,13 @@ $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb
 ?>
 <div class="col-lg-10 mt-3">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #E9F1F7;">
             Halaman Menu
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalTambahMenu">Tambah Menu</button>
+                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ModalTambahMenu">Tambah Menu</button>
                 </div>
             </div>
             <!-- Modal Tambah Menu-->
@@ -316,56 +316,40 @@ $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb
                 <?php
                 }
                 ?>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="text-nowrap">
-                                <th scope="col">No</th>
-                                <th scope="col">Foto Menu</th>
-                                <th scope="col">Nama Menu</th>
-                                <th scope="col">Keterangan</th>
-                                <th scope="col">Jenis Menu</th>
-                                <th scope="col">Kategori</th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">Stok</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $no = 1;
-                            foreach ($result as $row) {
-
-                            ?>
-                                <tr>
-                                    <th scope="row"><?php echo $no++ ?></th>
-
-                                    <td>
-                                        <div style="width : 100px">
-                                            <img src="assets/img/<?php echo $row['foto'] ?>" class="img-thumbnail" alt="...">
-                                        </div>
-
-                                    </td>
-                                    <td><?php echo $row['nama_menu'] ?></td>
-                                    <td><?php echo $row['keterangan'] ?></td>
-                                    <td><?php echo ($row['jenis_menu'] == 1) ? "Makanan" : "Minuman" ?></td>
-                                    <td><?php echo $row['kategori_menu'] ?></td>
-                                    <td><?php echo number_format($row['harga'], 0, ',', '.')  ?></td>
-                                    <td><?php echo $row['stok'] ?></td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_menu'] ?>"><i class="bi bi-eye"></i></button>
-                                            <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_menu'] ?>"><i class="bi bi-pencil-square"></i></button>
-                                            <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id_menu'] ?>"><i class="bi bi-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                        </tbody>
+                <!-- Card-->
+                <div class="row row-cols-1 row-cols-md-4 g-4">
                     <?php
-                            }
+                    $no = 1;
+                    foreach ($result as $row) {
                     ?>
-                    </table>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="assets/img/<?php echo $row['foto'] ?>" class="card-img-top " alt="<?php echo $row['nama_menu'] ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b><?php echo $row['nama_menu'] ?></b></h5>
+                                    <hr>
+                                    <p class="card-text"><?php echo $row['keterangan'] ?></p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li hidden class="list-group-item"><b>Jenis : </b><?php echo ($row['jenis_menu'] == 1) ? "Makanan" : "Minuman" ?></li>
+                                    <li hidden class="list-group-item"><b>Kategori : </b><?php echo $row['kategori_menu'] ?></li>
+                                    <li class="list-group-item"><b>Rp. </b><?php echo number_format($row['harga'], 0, ',', '.')  ?></li>
+                                    <li class="list-group-item"><b>Stok : </b><?php echo $row['stok'] ?></li>
+                                </ul>
+
+                                <div class="card-footer d-flex justify-content-center">
+                                    <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id_menu'] ?>"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_menu'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id_menu'] ?>"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                 </div>
+                <!-- Card-->
             <?php
             }
             ?>

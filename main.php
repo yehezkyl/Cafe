@@ -35,7 +35,7 @@ $hasil = mysqli_fetch_array($query);
             ?>
             <!--End Content-->
         </div>
-        <div class="fixed-bottom text-center bg-light py-2">
+        <div class="fixed-bottom text-center py-2" style="background-color: #E9F1F7;">
             <i class="bi bi-c-circle"></i> Copyright 2023
         </div>
     </div>

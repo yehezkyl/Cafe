@@ -15,9 +15,9 @@ while ($record = mysqli_fetch_array($query)) {
 
 $select_menu = mysqli_query($conn, "SELECT id_menu,nama_menu FROM tb_daftar_menu");
 ?>
-<div class="col-lg-9 mt-3">
+<div class="col-lg-10 mt-3">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #E9F1F7;">
             Halaman Order Item
         </div>
         <div class="card-body">

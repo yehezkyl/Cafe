@@ -27,12 +27,13 @@ if (!empty($_SESSION['username_cafe'])) {
 
     <!-- Custom styles for this template -->
     <link href="./assets/css/sign-in.css" rel="stylesheet">
+
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary text-center">
+<body class="d-flex align-items-center py-4 text-center" style="background: url('assets/img/bg2.jpg') no-repeat; background-size: cover;">
 
 
-    <main class="form-signin w-100 m-auto">
+    <main class="form-signin w-100 m-auto border rounded bg-body-secondary bg-opacity-50">
         <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
             <i class="bi bi-egg-fried fs-1"></i>
             <h1 class="h3 mb-3 fw-normal">Please log in</h1>
@@ -60,7 +61,7 @@ if (!empty($_SESSION['username_cafe'])) {
                 </label>
             </div>
             <button class="btn btn-primary w-100 py-2" type="submit" name="cek_login" value="cek">Log in</button>
-            <p class="mt-5 mb-3 text-body-secondary">&copy; 2023</p>
+            <p class="mt-5 mb-3 text-body-secondary">&copy; 2023 CafeApp</p>
         </form>
     </main>
 

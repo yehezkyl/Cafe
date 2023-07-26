@@ -5,7 +5,7 @@
                 include "main.php";
             } elseif (isset($_GET['x']) && $_GET['x'] == 'menu') {
                 if ($_SESSION['level_user'] == 1 || $_SESSION['level_user'] == 3) {
-                    $page = "menu.php";
+                    $page = "menu_card.php";
                     include "main.php";
                 } else {
                     $page = "dashboard.php";

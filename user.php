@@ -5,9 +5,9 @@ while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 ?>
-<div class="col-lg-9 mt-3">
+<div class="col-lg-10 mt-3">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #E9F1F7;">
             Halaman User
         </div>
         <div class="card-body">
@@ -318,7 +318,6 @@ while ($record = mysqli_fetch_array($query)) {
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
-                                <th scope="col">id</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Level</th>
@@ -334,7 +333,6 @@ while ($record = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
                                     <th scope="row"><?php echo $no++ ?></th>
-                                    <td><?php echo $row['id_user'] ?></td>
                                     <td><?php echo $row['nama'] ?></td>
                                     <td><?php echo $row['username'] ?></td>
                                     <td><?php

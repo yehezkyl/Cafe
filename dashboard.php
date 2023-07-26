@@ -4,9 +4,20 @@ $query = mysqli_query($conn, "SELECT * FROM tb_daftar_menu");
 while ($row = mysqli_fetch_array($query)) {
     $result[] = $row;
 }
+$query2 = mysqli_query($conn, "SELECT * FROM tb_order");
+while ($row2 = mysqli_fetch_array($query2)) {
+    $result2[] = $row2;
+}
+$query3 = mysqli_query($conn, "SELECT * FROM tb_user");
+while ($row3 = mysqli_fetch_array($query3)) {
+    $result3[] = $row3;
+}
+$count = count($result);
+$count2 = count($result2);
+$count3 = count($result3);
 ?>
 
-<div class="col-lg-9 mt-3">
+<div class="col-lg-10 mt-3">
     <!-- Carouser Menu Terbaru -->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -32,7 +43,7 @@ while ($row = mysqli_fetch_array($query)) {
 
             ?>
                 <div class="carousel-item <?php echo $aktif ?>">
-                    <img src="assets/img/<?php echo $data['foto'] ?>" class="img-fluid" style="height: 250px; width: 1000px; object-fit: cover" alt="...">
+                    <img src="assets/img/<?php echo $data['foto'] ?>" class="img-fluid" style="height: 300px; width: 100%; object-fit: cover" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5><?php echo $data['nama_menu'] ?></h5>
                         <p><?php echo $data['keterangan'] ?></p>
@@ -59,4 +70,75 @@ while ($row = mysqli_fetch_array($query)) {
             <a href="order" class="btn btn-primary">Buat Order</a>
         </div>
     </div>
+
+    <div class="card text-center mt-3">
+        <div class="card-header">
+            Dashboard
+        </div>
+        <div class="card-body">
+            <!-- Content Row -->
+            <div class="row justify-content-center">
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Jumlah Menu</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $count ?></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Jumlah Order</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $count2 ?></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        User</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $count3 ?></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Row -->
+        </div>
+        <div class="card-footer text-body-secondary">
+            <a class="btn btn-primary btn-sm me-1 text-nowrap" href="report">Lihat Report</a>
+        </div>
+    </div>
+
 </div>

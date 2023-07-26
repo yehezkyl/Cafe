@@ -4,9 +4,9 @@ $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username= '$_SESSION[u
 $record = mysqli_fetch_array($query);
 
 ?>
-<nav class="navbar navbar-expand sticky-top navbar-dark" style="background-color: #1e90ff;">
+<nav class="navbar navbar-expand sticky-top navbar-dark" style="background-color: #2274A5;">
     <div class="container-lg">
-        <a class="navbar-brand" href="."><i class="bi bi-egg-fried"></i> Cafe</a>
+        <a class="navbar-brand" href="/"><i class="bi bi-egg-fried"></i> Cafe</a>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">

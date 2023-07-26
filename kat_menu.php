@@ -5,9 +5,9 @@ while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 ?>
-<div class="col-lg-9 mt-3">
+<div class="col-lg-10 mt-3">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: #E9F1F7;">
             Halaman Kategori Menu
         </div>
         <div class="card-body">
