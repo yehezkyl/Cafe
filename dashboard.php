@@ -12,10 +12,28 @@ $query3 = mysqli_query($conn, "SELECT * FROM tb_user");
 while ($row3 = mysqli_fetch_array($query3)) {
     $result3[] = $row3;
 }
+$nama_menu = "";
+$total = null;
+$query4 = mysqli_query($conn, "SELECT nama_menu,COUNT(*) as 'total' from tb_list_order LEFT JOIN tb_daftar_menu ON tb_daftar_menu.id_menu = tb_list_order.menu GROUP BY menu");
+while ($row4 = mysqli_fetch_array($query4)) {
+    $result4[] = $row4;
+    $menu = $row4['nama_menu'];
+    $nama_menu .= "'$menu'" . ", ";
+    $jumlah = $row4['total'];
+    $total .= "$jumlah" . ", ";
+}
+
+$sum = 0;
+foreach ($result4 as $item) {
+    $sum += $item['total'];
+}
 $count = count($result);
 $count2 = count($result2);
 $count3 = count($result3);
+$count4 = $sum;
 ?>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="col-lg-10 mt-3">
     <!-- Carouser Menu Terbaru -->
@@ -71,6 +89,38 @@ $count3 = count($result3);
         </div>
     </div>
 
+    <!-- Chart Row -->
+    <div class="card mt-4 border-0 bg-light">
+        <div class="card-body text-center">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+            <script>
+                const ctx = document.getElementById('myChart');
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [<?php echo $nama_menu ?>],
+                        datasets: [{
+                            label: 'Jumlah Porsi Terjual',
+                            data: [<?php echo $total ?>],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <!-- Chart Row -->
+
     <div class="card text-center mt-3">
         <div class="card-header">
             Dashboard
@@ -114,7 +164,23 @@ $count3 = count($result3);
                         </div>
                     </div>
                 </div>
-
+                <!-- Pending Requests Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Porsi Terjual</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $count4 ?></div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Pending Requests Card Example -->
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-warning shadow h-100 py-2">
@@ -132,6 +198,7 @@ $count3 = count($result3);
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <!-- Content Row -->
